@@ -1,19 +1,19 @@
 import sys
 
-def print_assertion_error(error_type: str):
-	print("AssertionError:", error_type)
-
 def main():
-	if len(sys.argv) > 2:
-		print_assertion_error("more than one argument is provided")
-		return
+	if len(sys.argv) < 2:
+		sys.exit()
 
+	sys.tracebacklimit = 0
+	assert len(sys.argv) <= 2, "more than one argument is provided"
+	
+	exception = False
 	try:
-		if int(sys.argv[1]) % 2 == 0:
-			print("I'm Even.")
-		else:
-			print("I'm Odd.")
+		int(sys.argv[1])
 	except:
-		print_assertion_error("argument is not an integer")
+		exception = True
+	assert exception == False, "argument is not an integer"
+
+	print("I'm Odd." if int(sys.argv[1]) % 2 else "I'm Even.")
 
 main()	
