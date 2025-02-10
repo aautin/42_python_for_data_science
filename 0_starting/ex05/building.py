@@ -1,11 +1,12 @@
 import sys
 
-def print_assertion_error(error_type: str):
-	print("AssertionError:", error_type)
-
 def main():
-	sys.tracebacklimit = 0
-	assert len(sys.argv) <= 2, "more than one argument is provided"
+
+	try:
+		assert len(sys.argv) <= 2, "more than one argument is provided"
+	except AssertionError as e:
+		print("AssertionError:", e)
+		return
 
 	text: str
 	if len(sys.argv) < 2 or sys.argv[1] == None:
@@ -14,17 +15,13 @@ def main():
 	else:
 		text = sys.argv[1]
 
-	uppers_nb = len([c for c in text if c.isupper()])
-	lowers_nb = len([c for c in text if c.islower()])
-	spaces_nb = len([c for c in text if c.isspace()])
-	digits_nb = len([c for c in text if c.isdigit()])
-	recognized_nb = uppers_nb + lowers_nb + spaces_nb + digits_nb
+	punctuation_marks = ['!', ",", "'", ";", "\"", ".", "-", "?"]
 	print("The text contains", len(text), "characters:")
-	print(uppers_nb, "upper letters")
-	print(lowers_nb, "lower letters")
-	print(len(text) - recognized_nb, "punctuation marks")
-	print(spaces_nb, "spaces")
-	print(digits_nb, "digits")
+	print(len([c for c in text if c.isupper()]), "upper letters")
+	print(len([c for c in text if c.islower()]), "lower letters")
+	print(len([c for c in text if c in punctuation_marks]), "punctuation marks")
+	print(len([c for c in text if c.isspace()]), "spaces")
+	print(len([c for c in text if c.isdigit()]), "digits")
 
 if __name__ == "__main__":
 	main()
