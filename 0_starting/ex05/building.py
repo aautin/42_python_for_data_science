@@ -2,6 +2,14 @@ import sys
 
 
 def main():
+    """
+    Analyzes a given text and counts different character types.
+
+    If no argument is provided, reads input from stdin.
+
+    Prints the total character count, number of uppercase and
+    lowercase letters, punctuation marks, spaces, and digits.
+    """
 
     try:
         assert len(sys.argv) <= 2, "more than one argument is provided"
