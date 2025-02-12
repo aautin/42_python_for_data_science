@@ -4,14 +4,14 @@ from ft_filter import ft_filter
 
 def main():
     """
-    Takes two command-line arguments:  
-    1. A string containing multiple words.  
-    2. An integer representing the minimum word length.  
+    Takes two command-line arguments:
+    1. A string containing multiple words.
+    2. An integer representing the minimum word length.
 
-    Filters and prints words from the string that are longer than the given 
-    integer.  
+    Filters and prints words from the string that are longer than the given
+    integer.
 
-    Exceptions handled: incorrect number of arguments, non-integer second 
+    Exceptions handled: incorrect number of arguments, non-integer second
     argument, or excessively long first argument.
     """
 
